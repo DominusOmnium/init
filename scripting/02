@@ -1,0 +1,16 @@
+read -p "Username: " UNAME
+if [[ $(users | grep $UNAME) != "" ]]; then
+	sudo pkill -u $UNAME;
+	sudo /sbin/userdel -f $UNAME
+	sudo rm -rf /home/$UNAME
+else
+	echo "Active user not found"
+fi
+
+*////////////////////////////////////
+
+if [[ $(users | grep $USER) != "" ]]; then
+	sudo /sbin/userdel -f $USER
+else
+	echo "Active user not found"
+fi
